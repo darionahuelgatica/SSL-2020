@@ -8,7 +8,7 @@
 * **Productos:**
 	* **hello.c:** Desarrollo en C18 del programa que imprime "Hello, World!" por pantalla.
 	* **output.txt:** Output de "hello.c"
-* **Usuario GitHub:** darionahuelgatica
+* **Usuario GitHub:** [darionahuelgatica](https://github.com/darionahuelgatica)
 * **Fecha de entrega:** 12/04/2020
 * **Curso:** K2051
 * **Alumno:** Gatica Darío Nahuel
