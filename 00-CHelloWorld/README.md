@@ -9,3 +9,7 @@
 * **Curso:** K2051
 * **Alumno:** Gatica Darío Nahuel
 * **Legajo:** 1638555
+
+* **Enunciado:**
+	* Demostrar con, un programa simple, que se está en capacidad de editar, compilar, y ejecutar un programa C.
+	* Contar con las herramientas necesarias para abordar la resolución de los trabajos posteriores
