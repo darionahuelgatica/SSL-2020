@@ -2,17 +2,15 @@
 
 ## Parte 1 ##
   1. (1 punto) Indique la tarea más representativa para la cual un Ingeniero en Sistemas de Información está calificado.  
-   Aplicación tecnología—ciencia y técnicas para resolución problemas. Construcción de soluciones.
+      Construcción, mantenimiento y sustitución de soluciones informáticas.
   1. (1 punto) Defina información.  
       Entendemos por información a datos procesados, que pasan a ser relevantes para la toma de decisiones. 
   1. (1 punto) Indique las asignaturas del área de programación.  
-   Matemática Discreta, Algoritmos y Estructuras de Datos, Sintaxis y Semántica de los Lenguajes, Paradigmas de Programación y Gestión    de Datos.
+      Matemática Discreta, Algoritmos y Estructuras de Datos, Sintaxis y Semántica de los Lenguajes, Paradigmas de Programación y Gestión    de Datos.
   1. (1 punto) Indique las asignaturas del área de sistemas de información.  
-   Sistemas y Organizaciones, Análisis de Sistemas y Diseño de Sistemas.
-  1. (1 punto) Indique el paradigma de programación aplicado en primer año de la carrera.  
-   Paradigma Estructurado.
+      Sistemas y Organizaciones, Análisis de Sistemas, Diseño de Sistemas, Administración de Recursos y Proyecto Final.
   1. (1 punto) Defina abstracción.  
-   Separación, dejar de lado los detalles para enfocar en lo importante.
+      Separación, dejar de lado los detalles para enfocar en lo importante.
 
 ## Parte 2
   1. (1 punto) Indique diferencias entre secuencia y conjunto.  
@@ -26,7 +24,7 @@
   1. (1 punto) Defina partición de un conjunto.  
    Una partición de un conjunto es una división del mismo en subconjuntos disjuntos no vacíos.
   1. (1 punto) Sea X={a,b} indique P(X).  
-   El conjunto de partes de X es: P(X) = { {a}, {b}, {a, b} }
+   El conjunto de partes de X es: P(X) = {∅, {a}, {b}, {a, b} }
   1. (1 punto) Defina Lenguaje Formal.  
    Dado **V*: conjunto de todas las palabras, de cualquier longitud, que se pueden escribir con letras del alfabeto V**, decimos que un lenguaje L es todo subconjunto de V*.
   1. (1 punto) Defina autómata finito.  
@@ -39,7 +37,9 @@
 
 ## Parte 3
   1. (1 punto) Defina algoritmo.  
-   Secuencia de instrucciones que atiende una necesidad.
+      Secuencia de instrucciones que atiende una necesidad.
+  1. (1 punto) Indique el paradigma de programación aplicado en primer año de la carrera.
+      Paradigma Estructurado.
   1. (1 punto) Defina programación estructurada.  
    Es un paradigma de programación donde el objetivo es desarrollar programas de la forma más clara posible, solo utilizando **subrutinas** y tres estructuras de control.
   1. (1 punto) Indique las tres estructuras de control de flujo de ejecución de la programación estructurada.  
@@ -56,14 +56,15 @@
       * **Salida:** estos parámetros forman parte de la imagen de la función, son el resultado de la operación realizada.
       * **Entrada/Salida:** estos parámetros forman parte del dominio y de la imagen de la función a la vez, la función los recibe por referencia y los puede o no modificar. Al finalizar la operación son incluídos en el resultado.
   1. (1 punto) Defina tipo de dato abstracto.  
-     Un tipo de dato abstracto es un **conjunto finito de operaciones** que pueden realizarse sobre un **conjunto finito o infinito de valores**.
+     Un tipo de dato es un **conjunto finito de operaciones** que pueden realizarse sobre un **conjunto finito o infinito de valores**.
+     Decimos que es abstracto cuando no nos interesa su implementación.
   1. (1 punto) Indique las diferencias entre una pila y una cola.  
-    * **Pila:** es una secuencia de elementos, donde las principales operaciones son:
-          * Push: agregar un elemento al principio de la secuencia.
-          * Pop: retirar el primer elemento de la secuencia.
-    * **Cola:** es una secuencia de elementos, donde las principales operaciones son:
-          * Queue: agregar un elemento al principio de la secuencia.
-          * Dequeue: retirar el último elemento de la secuencia.
+		* **Pila:** es una secuencia de elementos, donde las principales operaciones son:
+	      * Push: agregar un elemento al principio de la secuencia.
+	      * Pop: retirar el primer elemento de la secuencia.
+	    * **Cola:** es una secuencia de elementos, donde las principales operaciones son:
+	      * Queue: agregar un elemento al principio de la secuencia.
+	      * Dequeue: retirar el último elemento de la secuencia.
   1. (1 punto) Defina archivo.  
      Un archivo es un grupo de datos estructurados que son almacenados y pueden ser usados por los programas. También es llamado fichero o file.
   1. (1 punto) Diseñe un algoritmo que dado un arreglo de naturales a y su longitud n calcule el promedio.  
