@@ -6,11 +6,10 @@ Darío Nahuel Gatica
 
 typedef char* String;
 
-unsigned GetLength(String string);
+bool IsEmpty(const String string);
 
-bool IsEmpty(String string);
+unsigned GetLength(const String string);
 
-string Power(String string, unsigned number);
+String Concat(const String str1, const String str2);
 
-string RemoveFirstLetter(String& string);
-// OTRA
+String Power(const String string, const unsigned n);
