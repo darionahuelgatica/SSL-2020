@@ -2,5 +2,4 @@
 # Operaciones con Strings
 
 ## GetLength
-
-$$ GetLength : String → N / GetLength(string) = $$
+<img src="https://raw.githubusercontent.com/darionahuelgatica/SSL/master/SVG/TP4GetLengthSVG.svg?sanitize=true">
