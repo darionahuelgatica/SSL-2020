@@ -1,0 +1,6 @@
+\mathbf{GetLength}: String \rightarrow \mathbb{N}\;/\; \mathbf{GetLength}(string) = \left\{\begin{matrix}
+0 & IsEmpty(string) \\ 
+1 + GetLength(stringReducida) & e.o.c.
+\end{matrix}\right.
+\\
+\mathbf{Donde:}\;stringReducida = "string\;con\;un\;caracter\;menos"
