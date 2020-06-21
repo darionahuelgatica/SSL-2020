@@ -12,3 +12,6 @@
 
 ## Power
 <img src="https://raw.githubusercontent.com/darionahuelgatica/SSL/master/SVG/TP4PowerSVG.svg?sanitize=true">
+
+## AreEqual
+<img src="https://raw.githubusercontent.com/darionahuelgatica/SSL/master/SVG/TP4AreEqualSVG.svg?sanitize=true">

@@ -1,0 +1,5 @@
+\mathbf{AreEqual}: String\;\times\;String \rightarrow \mathbb{B} \;/\; 
+\mathbf{AreEqual}(str1,str2) =\begin{Bmatrix}
+True & str1 = str2 \\ 
+False & str1 \neq  str2
+\end{Bmatrix}
