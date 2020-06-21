@@ -1,5 +1,6 @@
 \mathbf{Power}: String\;\times\;\mathbb{N}\rightarrow String\;/\; 
 \mathbf{Power}(str,\;n) = \left\{\begin{matrix}
-str & n = 0\\ 
+\lambda  & n = 0\\ 
+str & n = 1\\ 
 Concat(str, \mathbf{Power}(str, n-1)) & e.o.c. 
 \end{matrix}\right.
