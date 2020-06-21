@@ -1,0 +1,2 @@
+\mathbf{Concat}: String\;\times\;String \rightarrow String\;/\; 
+\mathbf{Concat}(str1,str2) = str1*str2

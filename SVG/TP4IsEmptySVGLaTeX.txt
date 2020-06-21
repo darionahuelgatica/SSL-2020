@@ -1,0 +1,6 @@
+\mathbf{IsEmpty}: String \rightarrow \mathbb{B}\;/\; \mathbf{IsEmpty}(string) = \left\{\begin{matrix}
+True  & firstChar = \mathbf{null} \\ 
+False & e.o.c.
+\end{matrix}\right.
+\\
+\mathbf{Donde:}\;firstChar = "primer\;caracter\;del\;string"
