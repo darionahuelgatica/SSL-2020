@@ -22,32 +22,30 @@ void GetLengthTests(){
 }
 
 void AreEqualTests(){
-    assert(AreEqual("",""));
-    assert(AreEqual("aa","aa"));
-    assert(AreEqual("ab aa","ab aa"));
-    assert(!AreEqual(""," "));
-    assert(!AreEqual("  "," "));
-    assert(!AreEqual("b","a"));
-    assert(!AreEqual("baa","a"));
-    assert(!AreEqual("bs","a"));
-    assert(!AreEqual("a","b"));
+    assert( AreEqual(     "",""));
+    assert( AreEqual(   "aa","aa"));
+    assert( AreEqual("ab aa","ab aa"));
+    assert(!AreEqual(     ""," "));
+    assert(!AreEqual(   "  "," "));
+    assert(!AreEqual(    "b","a"));
+    assert(!AreEqual(  "baa","a"));
+    assert(!AreEqual(    "a","abb"));
+    assert(!AreEqual(   "bs","a"));
+    assert(!AreEqual(    "a","b"));
 }
 
 void ConcatTests(){
-    assert("aaaa" == Concat("a", "aaa"));
-    assert("aaaa" == Concat("aaa", "a"));
-    assert("aaa" == Concat("aa", "a"));
-    assert("aaa" == Concat("a", "aa"));
-    assert("aa" == Concat("aa", ""));
-    assert("aa" == Concat("", "aa"));
-    assert("ab" == Concat("a", "b"));
-    assert("ba" == Concat("b", "a"));
+    assert(AreEqual("aza", Concat("a","za")));
+    assert(AreEqual("aa", Concat("","aa")));
+    assert(AreEqual("bb", Concat("bb","")));
+    assert(AreEqual("", Concat("","")));
+    assert(AreEqual("  ", Concat("","  ")));
 }
 
 void PowerTests(){
-    assert("bababa" == Power("ba", 3);
-    assert("ba" == Power("ba", 1);
-    assert("" == Power("ba", 0);
+    assert(AreEqual("bababa", Power("ba", 3)));
+    assert(AreEqual(    "ba", Power("ba", 1)));
+    assert(AreEqual(      "", Power("ba", 0)));
 }
 
 int main()
