@@ -1,9 +1,10 @@
 #include <stdio.h>
 
-enum State {In, Out};
+enum state {In, Out};
+typedef enum state State;
 
 int main() {
-    enum State state = Out;
+    State s = Out;
     int nc = 0;
     int nl = 0;
     int nw = 0;
@@ -14,17 +15,17 @@ int main() {
         switch(c) {
             case '\n':
                 ++nl;
-                state = Out;
+                s = Out;
             break;
             case '\t':
-                state = Out;
+                s = Out;
             break;
             case ' ':
-                state = Out;
+                s = Out;
             break;
             default:
                 ++nw;
-                state = In;
+                s = In;
             break;
         }
     }
