@@ -15,3 +15,11 @@
 * **F**  = {IN, OUT} = **Q**
 * **T**  =  { OUT → **'\n'** → OUT $~$ ; $~$ OUT → **''** → OUT $~$ ; $~$ OUT → **'\t'** → OUT $~$ ; $~$ OUT → **otro** → IN $~$ ;
             <br /> IN → **'\t'** → OUT $~$ ; $~$ IN → **'\t'** → OUT $~$ ; $~$ IN → **'\t'** → OUT }
+* **T**  =  { 
+  * (OUT, '\n', OUT, (++nl; ++nc )), 
+  * (OUT, '\t' | ' ', OUT, ++nc ),
+  * (OUT, otro, IN, (++nc; ++nw )),
+  * (IN, otro, IN, ++nc),
+  * (IN, '\n', OUT, (++nl; ++nc )),
+  * (IN, ' ' | '\t', OUT, ++nc)
+* }
