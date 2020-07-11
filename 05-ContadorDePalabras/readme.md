@@ -1,69 +1,102 @@
 # Trabajo 5 - Contador de Palabras
+## <ins> Arboles de expresión
+### nl = nw = nc = 0
+<img src='https://g.gravizo.com/svg?
+ digraph G {
+  node [shape = circle];
+  ranksep=0.1;
+  nodesep=1.0;
+  1 [ label = "="];
+  1 -> nl;
+  2 [ label = "="];
+  1 -> 2;
+  2 -> nw;
+  3 [ label = "="];
+  2 -> 3;
+  3 -> nc;
+  3 -> 0;
+}'/>
 
-## Objetivos
+### c == ' ' || c == '\n' || c == '\t'
+<img src='https://g.gravizo.com/svg?
+ digraph G {
+  node [shape = circle];
+  ranksep=0.2;
+  nodesep=0.8;
+  1 [ label = "||"];
+  2 [ label = "=="];
+  1 -> 2;
+  3 [ label = "c"];
+  2 -> 3;
+  4 [ label = "%27 %27"];
+  2 -> 4;
+  5 [ label = "||"];
+  6 [ label = "=="];
+  1 -> 5;
+  5 -> 6;
+  7 [ label = "c"];
+  6 -> 7;
+  8 [ label = "%27\\n%27"];
+  6 -> 8;
+  9 [ label = "=="];
+  5 -> 9
+  10 [ label = "c"];
+  11 [ label = "%27\\t%27"];
+  9 -> 10;
+  9 -> 11;
+}'/>
 
-* Aplicar máquinas de estado para el procesamiento de texto.
-* Implementar máquinas de estado con diferentes métodos.
+## <ins> Máquina de estados
+<img src='https://g.gravizo.com/svg?digraph G {
+	rankdir=LR;
+	node [shape = doublecircle]; OUT IN 
+	OUT -> IN [ label = "otro\n++nw\n++nc " ];
+	OUT -> OUT [ label = "%27\\n%27\n++nl\n++nc " ];
+	OUT -> OUT [ label = "%27\\t%27|%27 %27\n++nc " ];
+	IN -> IN [ label = "otro\n++nc " ];
+	IN -> OUT [ label = "%27\\t%27|%27 %27\n++nc " ];
+	IN -> OUT [ label = "%27\\n%27\n++nc\n++nl " ];
+}'/>
 
-## Temas
+### **A = (Q, ∑, T, q0, F)**
+### Donde:
 
-* Árboles de expresión.
-* Representación de máquinas de estado.
-* Implementación de máquinas de estado.
+* **Q**  = {IN, OUT}
+* **∑**  = ASCII
+* **q0** = OUT
+* **F**  = {IN, OUT} = **Q**
+* **T**  =  { 
+  * (OUT, '\n', OUT, (++nl; ++nc )), 
+  * (OUT, '\t' | ' ', OUT, ++nc ),
+  * (OUT, otro, IN, (++nc; ++nw )),
+  * (IN, otro, IN, ++nc),
+  * (IN, '\n', OUT, (++nl; ++nc )),
+  * (IN, ' ' | '\t', OUT, ++nc)
+* }
 
-## Tareas
+## <ins> Respuestas
 
-1. Árboles de Expresión
-   
-        a. Estudiar el programa del ejemplo las sección 1.5.4 Conteo de Palabras de [KR1988].
+## 1.ii Ventajas y desventajas de wc-1-enum-switch.c y de la versión de Kernighan & Ritchie
 
-        b. Dibujar el árbol de expresión para la inicialización de los contadores: nl = nw = nc = 0.
-            
-        c. Dibujar el árbol de expresión para la expresión de control del segundo if: c == ' ' || c == '\n' || c = '\t'.
+#### Versión enum y switch
+<ins> Ventajas:
+  * c y s se representan con **tipos de datos** relacionados directamente con las **responsabilidades** de dichas variables. Esto implica una semántica mejor definida o más cercana al lenguaje natural.
+  * Los casos del switch se parecen a las trancisiones de la Máquina de Estados.
+  * El código resultante se asimila al gráfico de la Máquina de Estados, lo que facilita establecer una relación entre ambos. Esto aporta, entre otras ventajas, la oportunidad desarrollar un software capaz de armar el gráfico en base al código o viceversa.
 
-2. Máquina de Estado
-      
-        a. Describir en lenguaje dot [DOT2015] y dentro del archivo wc.gv la máquina de estado que resuelve el problema planteado.
+<ins> Desventajas:
+  * Redundancia: la expresión "s = Out;" se repite muchas veces. En este caso no es una desventaja mayor, pero en términos de escalabilidad podría agravarse.
+  * El programa podría trabajar sólo con el tipo de dato **int**, sería un poco más simple aunque menos legible.
+  * Existe un pequeño trabajo extra al tener que definir una variable del tipo enum, que no existe cuando la misma es del tipo int. Dependerá del contexto ver si esto es una desventaja mayor o menor.
 
-        b. Formalizar la máquina de estados como una n-upla, basarse en el Capítulo #1 del Volumen #3 de [MUCH2012]
+#### Versión Kernighan & Ritchie:
+<ins> Ventajas:
+  * El código es más corto.
+  * Se trabaja sólo con variables del tipo **int**, esto aporta simplicidad al desarrollar.
+  * Trabajamos con la directiva **define**, que nos permite una semántica más clara y abstracta en su uso.
 
-3. Implementaciones de Máquinas de Estado
-   
-        Las implementaciones varían en los conceptos que utilizan para representaar los estados y las transiciones.
-
-        a. Implementación #1: Una variable para el estado actual.
-
-            1. Escribir el programa wc-1-enum-switch.c que siga la Implementación #1, variante enum y switch.
-            
-                Esta implementación es la regularización de la implementación de la sección 1.5.4 de [KR1988]. Los estados son valores de una variable y las transiciones son la selección estructurada y la actualización de esa variable. Esta versión es menos eficiente que la versión de [KR1988], pero su regularidad permite la automatización de la construcción del programa que implementa la máquina de estados. Además de la regularidad, esta versión debe:
-
-                * Utilizar typedef y enum en vez de define, de tal modo que la variable estado se pueda declarar de la siguiente manera: State s = Out;
-                * Utilizar switch en vez de if.
-
-            2. Responder en readme.md: Indicar ventajas y desventajas de la versión de [KR1988] y de esta implementción.
-        
-        b. Implementación #2: Sentencias goto (sí, el infame goto)
-
-            1. Leer la sección 3.8 Goto and labels de [KR1988]
-            2. Leer Go To Statement Considered Harmful de [DIJ1968].
-            3. Leer "GOTO Considered Harmful" Considered Harmful de [RUB1987].
-            4. Responder en readme.md: ¿Tiene alguna aplicación go to hoy en día? ¿Algún lenguaje moderno lo utiliza?
-            5. Escribir el programa wc-2-goto.c que siga la Implementación #2. En esta implementación los estados son etiquetas y las transiciones son la selección estructurada y el salto incondicional con la sentencia goto.
-        
-        c. Implementación #3: Funciones Recursivas
-
-            1. Leer la sección 4.10 Recursividad de [KR1988].
-            2. Responder en readme.md: ¿Es necesario que las funciones accedan a a contadores? Si es así, ¿cómo hacerlo? Leer la sección 1.10 Variables Externas y Alcance y 4.3 Variables Externas de [KR1988].
-            3. Escribir el programa, wc-3-rec.c que siga la implementación #3. En esta implementación los estados son funciones recursivas y las transiciones son la selección estructurada y la invocación recursiva.
-
-        d. Implementación #X:
-
-            Es posible diseñar más implementaciones. Por ejemplo, una basada en una tabla que defina las transiciones de la máquina. En ese caso, el programa usaría la tabla para lograr el comportamiento deseado. El objetivo de este punto es diseñar una implementación diferente a las implementaciones #1, #2, y #3.
-
-            1. Diseñar una nueva implementación e indicar en Readme.md cómo esa implementación representa los estados y cómo las transiciones.
-            2. Escribir el programa, wc-x.c que siga la nueva implementación.
-
-4. Eficiencia del uso del Tiempo
-
-        Construir una tabla comparativa a modo de benchmark que muestre el tiempo de procesamiento para cada una de las cuatro implementaciones, para tres archivos diferentes de tamaños diferentes, el primero en el orden de los kilobytes, el segundo en el orden de los megabytes, y el tercero en el orden de los gigabytes.
-        La tabla tiene en las filas las cuatro implementación, en las columnas los tres archivos, y en la intersección la duración para una implementación para un archivo.
+<ins> Desventajas:
+  * El código final difiere bastante del gráfico de la Máquina de estados. Nos perdemos la oportunidad mencionada en las ventajas de la versión anterior.
+  * Si bien fue mencionado que usar sólo variables del tipo int hace que el desarrollo sea más simple, la semántica resultante es menos abstracta. Esta práctica puede obstaculizar el mantenimiento de los softwares que se desarrollen así.
+  * Si bien fue mencionado que usar **define** es una ventaja, también es una directiva que va quedando un poco obsoleta. Hoy en día es muy común usar constantes o enums. Dado que gracias a los nuevos compiladores tanto define como las constantes terminan siendo lo mismo luego de la compilación, y que las constantes permiten desarrollar como si usáramos una variable en lugar de un valor, no hay motivos concretos seguir usando define en términos generales.
+  * Existe una pequeña reduncancia para el caso de **c == '\n'**
