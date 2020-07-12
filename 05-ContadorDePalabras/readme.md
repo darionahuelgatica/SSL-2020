@@ -1,62 +1,14 @@
 # Trabajo 5 - Contador de Palabras
 ## <ins> Arboles de expresión
 ### nl = nw = nc = 0
-<img src='https://g.gravizo.com/svg?
- digraph G {
-  node [shape = circle];
-  ranksep=0.1;
-  nodesep=1.0;
-  1 [ label = "="];
-  1 -> nl;
-  2 [ label = "="];
-  1 -> 2;
-  2 -> nw;
-  3 [ label = "="];
-  2 -> 3;
-  3 -> nc;
-  3 -> 0;
-}'/>
+	
+<img src='https://g.gravizo.com/svg?digraph%20G%20%7B%0A%20%20node%20%5Bshape%20%3D%20circle%5D%3B%0A%20%20ranksep%3D0.1%3B%0A%20%20nodesep%3D1.0%3B%0A%20%201%20%5B%20label%20%3D%20%22%3D%22%5D%3B%0A%20%201%20-%3E%20nl%3B%0A%20%202%20%5B%20label%20%3D%20%22%3D%22%5D%3B%0A%20%201%20-%3E%202%3B%0A%20%202%20-%3E%20nw%3B%0A%20%203%20%5B%20label%20%3D%20%22%3D%22%5D%3B%0A%20%202%20-%3E%203%3B%0A%20%203%20-%3E%20nc%3B%0A%20%203%20-%3E%200%3B%0A%7D' />
 
 ### c == ' ' || c == '\n' || c == '\t'
-<img src='https://g.gravizo.com/svg?
- digraph G {
-  node [shape = circle];
-  ranksep=0.2;
-  nodesep=0.8;
-  1 [ label = "||"];
-  2 [ label = "=="];
-  1 -> 2;
-  3 [ label = "c"];
-  2 -> 3;
-  4 [ label = "%27 %27"];
-  2 -> 4;
-  5 [ label = "||"];
-  6 [ label = "=="];
-  1 -> 5;
-  5 -> 6;
-  7 [ label = "c"];
-  6 -> 7;
-  8 [ label = "%27\\n%27"];
-  6 -> 8;
-  9 [ label = "=="];
-  5 -> 9
-  10 [ label = "c"];
-  11 [ label = "%27\\t%27"];
-  9 -> 10;
-  9 -> 11;
-}'/>
+<img src='https://g.gravizo.com/svg?%20digraph%20G%20%7B%0A%20%20node%20%5Bshape%20%3D%20circle%5D%3B%0A%20%20ranksep%3D0.2%3B%0A%20%20nodesep%3D0.8%3B%0A%20%201%20%5B%20label%20%3D%20%22%7C%7C%22%5D%3B%0A%20%202%20%5B%20label%20%3D%20%22%3D%3D%22%5D%3B%0A%20%201%20-%3E%202%3B%0A%20%203%20%5B%20label%20%3D%20%22c%22%5D%3B%0A%20%202%20-%3E%203%3B%0A%20%204%20%5B%20label%20%3D%20%22%27%20%27%22%5D%3B%0A%20%202%20-%3E%204%3B%0A%20%205%20%5B%20label%20%3D%20%22%7C%7C%22%5D%3B%0A%20%206%20%5B%20label%20%3D%20%22%3D%3D%22%5D%3B%0A%20%201%20-%3E%205%3B%0A%20%205%20-%3E%206%3B%0A%20%207%20%5B%20label%20%3D%20%22c%22%5D%3B%0A%20%206%20-%3E%207%3B%0A%20%208%20%5B%20label%20%3D%20%22%27%5C%5Cn%27%22%5D%3B%0A%20%206%20-%3E%208%3B%0A%20%209%20%5B%20label%20%3D%20%22%3D%3D%22%5D%3B%0A%20%205%20-%3E%209%0A%20%2010%20%5B%20label%20%3D%20%22c%22%5D%3B%0A%20%2011%20%5B%20label%20%3D%20%22%27%5C%5Ct%27%22%5D%3B%0A%20%209%20-%3E%2010%3B%0A%20%209%20-%3E%2011%3B%0A%7D' />
 
 ## <ins> Máquina de estados
-<img src='https://g.gravizo.com/svg?digraph G {
-	rankdir=LR;
-	node [shape = doublecircle]; OUT IN 
-	OUT -> IN [ label = "otro\n++nw\n++nc " ];
-	OUT -> OUT [ label = "%27\\n%27\n++nl\n++nc " ];
-	OUT -> OUT [ label = "%27\\t%27|%27 %27\n++nc " ];
-	IN -> IN [ label = "otro\n++nc " ];
-	IN -> OUT [ label = "%27\\t%27|%27 %27\n++nc " ];
-	IN -> OUT [ label = "%27\\n%27\n++nc\n++nl " ];
-}'/>
+<img src='https://g.gravizo.com/svg?digraph%20G%20%7B%0A%09rankdir%3DLR%3B%0A%09node%20%5Bshape%20%3D%20doublecircle%5D%3B%20OUT%20IN%20%0A%09OUT%20-%3E%20IN%20%5B%20label%20%3D%20%22otro%5Cn%2B%2Bnw%5Cn%2B%2Bnc%20%22%20%5D%3B%0A%09OUT%20-%3E%20OUT%20%5B%20label%20%3D%20%22%27%5C%5Cn%27%5Cn%2B%2Bnl%5Cn%2B%2Bnc%20%22%20%5D%3B%0A%09OUT%20-%3E%20OUT%20%5B%20label%20%3D%20%22%27%5C%5Ct%27%7C%27%20%27%5Cn%2B%2Bnc%20%22%20%5D%3B%0A%09IN%20-%3E%20IN%20%5B%20label%20%3D%20%22otro%5Cn%2B%2Bnc%20%22%20%5D%3B%0A%09IN%20-%3E%20OUT%20%5B%20label%20%3D%20%22%27%5C%5Ct%27%7C%27%20%27%5Cn%2B%2Bnc%20%22%20%5D%3B%0A%09IN%20-%3E%20OUT%20%5B%20label%20%3D%20%22%27%5C%5Cn%27%5Cn%2B%2Bnc%5Cn%2B%2Bnl%20%22%20%5D%3B%0A%7D' />
 
 ### **A = (Q, ∑, T, q0, F)**
 ### Donde:
