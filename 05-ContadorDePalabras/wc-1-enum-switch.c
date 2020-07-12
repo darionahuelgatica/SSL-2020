@@ -24,8 +24,10 @@ int main() {
                 s = Out;
             break;
             default:
-                ++nw;
-                s = In;
+                if (s == Out) {
+                    ++nw;
+                    s = In;
+                }
             break;
         }
     }
