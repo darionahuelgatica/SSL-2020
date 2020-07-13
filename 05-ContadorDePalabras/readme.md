@@ -28,7 +28,7 @@
 
 ## <ins> Respuestas
 
-## 1.ii Ventajas y desventajas de wc-1-enum-switch.c y de la versión de Kernighan & Ritchie
+## 3.a.ii Ventajas y desventajas de wc-1-enum-switch.c y de la versión de Kernighan & Ritchie
 
 #### Versión enum y switch
 <ins> Ventajas:
@@ -52,3 +52,12 @@
   * Si bien fue mencionado que usar sólo variables del tipo int hace que el desarrollo sea más simple, la semántica resultante es menos abstracta. Esta práctica puede obstaculizar el mantenimiento de los softwares que se desarrollen así.
   * Si bien fue mencionado que usar **define** es una ventaja, también es una directiva que va quedando un poco obsoleta. Hoy en día es muy común usar constantes o enums. Dado que gracias a los nuevos compiladores tanto define como las constantes terminan siendo lo mismo luego de la compilación, y que las constantes permiten desarrollar como si usáramos una variable en lugar de un valor, no hay motivos concretos seguir usando define en términos generales.
   * Existe una pequeña reduncancia para el caso de **c == '\n'**
+
+## 3.b.iv  ¿Tiene alguna aplicación go to hoy en día? ¿Algún lenguaje moderno lo utiliza?
+
+Varios lenguajes modernos permiten utilizar go to, entre ellos C, C++ y PHP (lo más curioso de este último caso es que inicialmente su léxico no incluía esta expresión y la incorporó en 2009).
+La principal aplicación de goto esta "escondida", se trata de que muchas expresiones muy comunes (for, por ejemplo) en muchos lenguajes se traducen en secuencias de expresiónes que incluyen goto (sin que el programador se entere).
+Goto tiene su fama de "expresión peligrosa" por haber causado muchos problemas en el pasado ya que su uso es muy riesgoso. Si bien es cierto que, gracias a todas las cláusulas ya existentes (for, break, return, etc) nunca sería estrictamente necesario su uso y cualquier algoritmo debería poder implementarse sin goto. Aún así, se dice que es útil para algunos escenarios que se presentan dentro la programación estructurada. Entre ellos algunos son:
+  * Salir inmediatamente de una función de forma limpia y rápida. En algunos casos esto puede hacerse con un return, pero en otros habría que "concatenar returns" y con un goto se simplificaría.
+  * En entornos de desarrollo que no provean manejo de excepciones o errores, es útil para "escapar" en caso de error hacia una rutina predefinida.
+  * Para optimizar tiempos de ejecución a bajo nivel. Goto es muy veloz en tiempo de ejecución, permitiendo acelerar los algoritmos del código. Esto es un arma de doble filo porque los compiladores típicos no pueden optimizarlo.
