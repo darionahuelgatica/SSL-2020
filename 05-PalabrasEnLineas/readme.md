@@ -59,3 +59,7 @@ Goto tiene su fama de "expresión peligrosa" por haber causado muchos problemas 
   * Salir inmediatamente de una función de forma limpia y rápida. En algunos casos esto puede hacerse con un return, pero en otros habría que "concatenar returns" y con un goto se simplificaría.
   * En entornos de desarrollo que no provean manejo de excepciones o errores, es útil para "escapar" en caso de error hacia una rutina predefinida.
   * Para optimizar tiempos de ejecución a bajo nivel. Goto es muy veloz en tiempo de ejecución, permitiendo acelerar los algoritmos del código. Esto es un arma de doble filo porque los compiladores típicos no pueden optimizarlo.
+
+## 3.c.ii  ¿Es necesario que las funciones accedan a contadores? Si es así, ¿cómo hacerlo?.
+
+No es necesario
