@@ -26,7 +26,7 @@
 
 ## <ins> Respuestas
 
-## 1.ii Ventajas y desventajas de wl-1-enum-switch.c y de la versión de Kernighan & Ritchie
+## 3.a.ii Ventajas y desventajas de wl-1-enum-switch.c y de la versión de Kernighan & Ritchie
 
 #### Versión enum y switch
 <ins> Ventajas:
