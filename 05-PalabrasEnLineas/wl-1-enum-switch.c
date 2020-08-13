@@ -5,32 +5,20 @@ typedef enum state State;
 
 int main() {
     State s = Out;
-    int nc = 0;
-    int nl = 0;
-    int nw = 0;
     char c;
 
     while((c = getchar()) != EOF) {
-        ++nc;
         switch(c) {
             case '\n':
-                ++nl;
-                s = Out;
-            break;
             case '\t':
-                s = Out;
-            break;
             case ' ':
+                if (s == In) putchar('\n');
                 s = Out;
             break;
             default:
-                if (s == Out) {
-                    ++nw;
-                    s = In;
-                }
+                s = In;
+                putchar(c);
             break;
         }
     }
-
-    printf("%d %d %d \n", nl, nw, nc);
 }
