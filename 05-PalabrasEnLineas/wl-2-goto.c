@@ -1,29 +1,22 @@
 #include <stdio.h>
 
 int main() {
-    int nc, nw, nl;
-    nc = nw = nl = 0;
     char c;
-    OUT: if((c = getchar()) != EOF) {
-        ++nc;
-        if (c == '\n')
-                ++nl;
+    OUT: if((c = getchar()) == EOF) return 0;
         if (c == ' ' || c == '\n' || c == '\t')
             goto OUT;
-        else {
-            ++nw;
-            goto IN;
+        else { 
+            putchar(c);
+            goto IN; 
         }
-    }
 
-    IN: if((c = getchar()) != EOF) {
-        ++nc;
-        if (c == '\n')
-                ++nl;
-        if (c == ' ' || c == '\n' || c == '\t')
+    IN: if((c = getchar()) == EOF) return 0;
+        if (c == ' ' || c == '\n' || c == '\t') {
+            putchar('\n');
             goto OUT;
-        else 
+        }
+        else {
+            putchar(c);
             goto IN;
-    }
-    printf("%d %d %d \n", nl, nw, nc);
+        } 
 }
